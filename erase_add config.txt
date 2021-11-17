@@ -1,0 +1,3 @@
+#oneliner based on scripts
+
+cfgutil pair && cfgutil erase && sleep 120 && cfgutil exec -a $HOME/Documents/scripting/ipad\ utilities/wifi_dep.sh
