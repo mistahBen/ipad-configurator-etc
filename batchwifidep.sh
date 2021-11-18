@@ -13,15 +13,19 @@ iPad wifi & enroll utility
 configpath=$HOME/Desktop/Configuration\ Profiles/studentwifinew.mobileconfig # edit this as needed
 
 while [ TRUE ] ; do
-
 read -p "press [ ENTER ] to run configuration"
+devicecount = $(cfgutil list | wc -l)
 cfgutil -f pair
-#serial number logging, if you're into that
-serials=$(cfgutil -f get serialNumber | awk '{print $4}')
-echo "$serials,$(date "+%Y-%m-%d_%H:%M:%S")" >> serialsconfig.csv
+if [ "$devicecount" > 1 ] ; then
+    #serial number logging, if you're into that
+    serials=$(cfgutil -f get serialNumber | awk '{print $4}')
+    else
+        serials=$(cfgutil get serialNumber)
+
 cfgutil -f install-profile "$configpath" && # Note: this command always report as failing even if it succeeds.
 sleep 30
 cfgutil -f prepare --dep --skip-language --skip-region &&
+echo "$serials,$(date "+%Y-%m-%d_%H:%M:%S")" >> serialsconfig.csv
 afplay /System/Library/Sounds/Ping.aiff
-echo "You may disconnect iPads now."
+echo "You may disconnect iPads now. Press [ ENTER ] to configure next iPad(s)."
 done
