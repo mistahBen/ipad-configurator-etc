@@ -25,7 +25,7 @@ if [ "$devicecount" > 1 ] ; then
 cfgutil -f install-profile "$configpath" && # Note: this command always report as failing even if it succeeds.
 sleep 30
 cfgutil -f prepare --dep --skip-language --skip-region &&
-echo "$serials,$(date "+%Y-%m-%d_%H:%M:%S")" >> serialsconfig.csv
+echo "$serials,$(date "+%Y-%m-%d_%H:%M:%S")" >> serialsconfig.csv # logs device config date. Optional but handy.
 afplay /System/Library/Sounds/Ping.aiff
 echo "You may disconnect iPads now. Press [ ENTER ] to configure next iPad(s)."
 done
