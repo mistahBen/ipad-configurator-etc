@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## this script finds, removes, and reinstalls Drive for Desktop settings for easier resets. Needs Sudo##
-find $HOME/LibraryCookies $HOME/Library/Application\ Scripts $HOME/Library/Preferences $HOME/Library/Group\ Containers -iname "*google*drive*" -delete
+find $HOME/Library/Cookies $HOME/Library/Application\ Scripts $HOME/Library/Preferences $HOME/Library/Group\ Containers -iname "*google*drive*" -delete
 rm -r $HOME/Library/Group\ Containers/google_drive
 rm -r $HOME/Library/Application\ Support/Google/DriveFS
 sudo rm -r /Applications/Google\ Drive/
