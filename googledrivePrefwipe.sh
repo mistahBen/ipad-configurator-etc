@@ -4,7 +4,7 @@
 find $HOME/Library/Cookies $HOME/Library/Application\ Scripts $HOME/Library/Preferences $HOME/Library/Group\ Containers -iname "*google*drive*" -delete
 rm -r $HOME/Library/Group\ Containers/google_drive
 rm -r $HOME/Library/Application\ Support/Google/DriveFS
-sudo rm -r /Applications/Google\ Drive/
+sudo rm -r /Applications/Google\ Drive.app/
 
 # gets latest version of Google Drive
 curl https://dl.google.com/drive-file-stream/GoogleDrive.dmg -o /Users/Shared/GoogleDrive.dmg
