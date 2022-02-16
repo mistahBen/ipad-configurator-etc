@@ -9,6 +9,10 @@ if [ "$EUID" -ne 0 ] # check for sudo/root
   then echo "Are you root?"
   exit
 fi
+if [ $(ls | wc -l) -gt 2 ]
+	then echo "Please run this command from a directory ONLY containing this script and the mobileconfig file."
+	exit 2
+fi
 
 jamf removemdmprofile &&
 open "x-apple.systempreferences:com.apple.preference.profiles" &&
