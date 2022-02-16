@@ -1,2 +1,4 @@
 *.txt
 *.csv
+*.mobileconfig
+.DS_Store
