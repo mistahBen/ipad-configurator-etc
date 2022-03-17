@@ -15,10 +15,14 @@ if [ $(ls | wc -l) -gt 2 ]
 fi
 
 jamf removemdmprofile &&
+osascript -e 'display notification "Please go to Profiles in System Preferences" with title "MDM Enrollment"'
 open "x-apple.systempreferences:com.apple.preference.profiles" &&
 sleep 10
 open $mobileconfig &&
-sleep 15
+while [ $(profiles list -user $(who | awk '/console/{printf $1}') | grep attribute | wc -l) -lt 1 ] # wait for wifi profile to be installed
+  do
+    sleep 10
+  done
 profiles renew -type enrollment
 sleep 120 && # wait for enrollment profiles to download
 profiles remove -identifier $ident &&
