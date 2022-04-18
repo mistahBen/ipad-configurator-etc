@@ -21,6 +21,7 @@ if [ "$devicecount" > 1 ] ; then
     serials=$(cfgutil -f get serialNumber | awk '{print $4}')
     else
         serials=$(cfgutil get serialNumber)
+fi
 
 cfgutil -f install-profile "$configpath" && # Note: this command always report as failing even if it succeeds.
 sleep 30
